@@ -1,0 +1,12 @@
+.search-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.input-wrapper {
+    margin: 136px 136px 0 136px;
+    width: 220px;
+    height: 40px;
+}
