@@ -1,0 +1,16 @@
+.search-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 136px 136px 0 136px;
+}
+
+.input-wrapper {
+    width: 220px;
+    height: 40px;
+}
+
+.dropdown-wrapper {
+    width: 220px;
+    height: 40px;
+    line-height: 40px;
+}

@@ -1,36 +1,7 @@
 .page-container {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   background: #F2F6FC;
+  padding-bottom: 80px;
 }
 
-.header {
-  height: 60px;
-  border-bottom: 1px solid #C4C4C4;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-.user-info {
-  margin-right: 136px;
-  display: flex;
-  align-items: center;
-}
-
-.bell-icon {
-  margin-right: 32px;
-
-}
-
-.user-name {
-  font-family: Roboto Medium;
-  font-size: 14px;
-  color: #223273;
-  line-height: 22px;
-}
-
-.user-avatar{
-  width: 60px;
-  height: 60px;
-}
