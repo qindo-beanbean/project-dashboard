@@ -1,16 +1,20 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
-import { Input, Dropdown, MenuProps, message } from 'antd';
+import { Input, Dropdown, MenuProps, message, ConfigProvider } from 'antd';
 import { SearchOutlined, DownOutlined } from '@ant-design/icons';
-import './index.css';
 import { IProject } from '../../types/projectData';
-import { MOCK_DATA } from '../../common/mock';
 import { Constant } from '../../common/constant';
+import useDevice from '../../hooks/useDevice';
+import classnames from 'classnames';
+import './index.css';
+
 interface IOperationProps {
     allProjectList: IProject[];
     filterProjectList: (category: string) => void;
     handleSearch: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
+
 export default function Operation(props: IOperationProps) {
+    const isMobile = useDevice();
     const { allProjectList } = props;
 
     const [allCategory, setAllCategory] = useState<string[]>();
@@ -47,9 +51,16 @@ export default function Operation(props: IOperationProps) {
 
     const items: MenuProps['items'] = useMemo(() => generateMenu(), [allCategory]);
     return (
-        <div className='search-container'>
+        <div className={classnames('search-container', { 'isMobile': isMobile })}>
+            <div
+                className='content'
+                style={{ display: isMobile ? 'block' : 'none' }}
+            >
+                <h1>Hello Sarah! </h1>
+                <span>Here you can find your projects and dashboards.</span>
+            </div>
             <Dropdown
-                className='dropdown-wrapper'
+                className={classnames('dropdown-wrapper', { 'isMobile': isMobile })}
                 menu={{ items, onClick }}
             >
                 <a onClick={(e) => e.preventDefault()}>
@@ -57,12 +68,38 @@ export default function Operation(props: IOperationProps) {
                     <DownOutlined />
                 </a>
             </Dropdown>
-            <Input
-                className='input-wrapper'
-                placeholder="Search for a keyword"
-                prefix={<SearchOutlined />}
-                onChange={(e)=> props.handleSearch(e)}
-            />
+            {isMobile ? (
+                <ConfigProvider
+                    theme={{
+                        components: {
+                            Input: {
+                                hoverBorderColor: 'transparent',
+                                activeBorderColor: 'transparent',
+                                activeShadow: 'transparent'
+                            }
+                        },
+                    }}
+                >
+                    <div className='input-wrapper-isMobile'>
+                        <Input
+                            className='input-isMobile'
+                            placeholder="Search"
+                            suffix={<SearchOutlined />}
+                            bordered={false}
+                            onChange={(e) => props.handleSearch(e)}
+                        />
+                    </div>
+                </ConfigProvider>
+
+            ) : (
+                <Input
+                    className='input-wrapper'
+                    placeholder="Search for a keyword"
+                    prefix={<SearchOutlined />}
+                    onChange={(e) => props.handleSearch(e)}
+                />
+            )}
+
         </div>
     )
 }

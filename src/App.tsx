@@ -58,7 +58,8 @@ function App() {
 	}
 
 	const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-		const searchString = e.target.value;
+		// 支持大小写
+		const searchString = e.target.value.toLocaleUpperCase();
 		if (!searchString) {
 			// 如果搜索为空，应该展示当前目录下的所有projects
 			setProjectList(curCategoryProjects());
@@ -67,13 +68,12 @@ function App() {
 			let matchedProjects: IProject[] = [];
 			const currentProjects = curCategoryProjects();
 			currentProjects.forEach((project) => {
-				if (project.name.includes(searchString)) {
+				if ((project.name).toLocaleUpperCase().includes(searchString)) {
 					matchedProjects.push(project);
 				}
 			});
 			setProjectList(matchedProjects);
 		}
-
 	}
 
 	return (
