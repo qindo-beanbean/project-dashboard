@@ -17,7 +17,6 @@ export default function ProjectList(props: IProjectListProps) {
             {projectData?.map((project) => {
                 const categoryColor = hexToRGBA(CategoryColorMap[`${project.category}`], 1);
                 const semiTransparentColor = hexToRGBA(CategoryColorMap[`${project.category}`], 0.5);
-
                 return (
                     <div
                         className='single-project-wrapper'

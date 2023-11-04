@@ -14,3 +14,7 @@
     height: 40px;
     line-height: 40px;
 }
+
+.dropdown-wrapper:hover {
+    color: #5794f7;
+}

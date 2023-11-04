@@ -1,5 +1,7 @@
 .project-list-wrapper {
     margin: 20px 136px 0 136px;
+    max-height: 340px;
+    overflow: scroll;
 }
 
 .single-project-wrapper {
