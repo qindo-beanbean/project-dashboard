@@ -83,6 +83,7 @@ function App() {
 				allProjectList={originProjectList}
 				filterProjectList={handleFilter}
 				handleSearch={handleSearch}
+				curCategory={curCategory}
 			/>
 			<ProjectList
 				projectData={projectList}

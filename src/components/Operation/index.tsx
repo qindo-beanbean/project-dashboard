@@ -11,6 +11,7 @@ interface IOperationProps {
     allProjectList: IProject[];
     filterProjectList: (category: string) => void;
     handleSearch: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    curCategory: string;
 }
 
 export default function Operation(props: IOperationProps) {
@@ -64,7 +65,7 @@ export default function Operation(props: IOperationProps) {
                 menu={{ items, onClick }}
             >
                 <a onClick={(e) => e.preventDefault()}>
-                    Select By Category &nbsp;
+                    Select By Category: {props.curCategory} &nbsp;
                     <DownOutlined />
                 </a>
             </Dropdown>

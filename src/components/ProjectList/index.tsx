@@ -32,7 +32,7 @@ export default function ProjectList(props: IProjectListProps) {
 
                         <div
                             className='single-project-wrapper'
-                            // className={classnames('header', { 'isMobile': isMobile })}
+                            key={project.id}
                             style={{
                                 borderLeft: `10px solid ${categoryColor}`
                             }}
