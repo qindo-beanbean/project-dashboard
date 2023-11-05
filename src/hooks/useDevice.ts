@@ -11,10 +11,10 @@ export default function useDevice() {
                 setIsMobile(false);
             }
         };
-        // 监听窗口大小的变化
+        // Listen to the window size changes
         window.addEventListener('resize', handleResize);
 
-        // 清除监听器以避免内存泄漏
+        // Clear listener to avoid memory leak 清除监听器以避免内存泄漏
         return () => {
             window.removeEventListener('resize', handleResize);
         };

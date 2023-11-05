@@ -19,13 +19,15 @@ npm start
 This command will start the development server, usually at http://localhost:3000.
 
 ## Main Features
- Feature 1:
+
+<font color="gray">You can check the commit messages under feature/qindo to find the code related to the corresponding feature.</font>
+
+Feature 1:
  Able to view multiple projects with details in the App.
  ![projects list](public/images/demofeature1.png)
 
- Feature 2:
+Feature 2:
  Able to select projects by catogory in the App.
-
  a. Select All
  ![projects select](public/images/demofeature2.png)
  b. select by a single category
@@ -40,6 +42,7 @@ Feature 4:
   ![projects delete](public/images/demofeature4.png)
   result:
   ![projects delete result](public/images/demofeature4-result.png)
+
 Feature 5:
 Able to adjust layout according to window size. Adapt for mobile(window size less than 860px)
 ![projects mobile](public/images/demofeature5.png)

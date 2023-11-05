@@ -20,7 +20,7 @@ export default function Operation(props: IOperationProps) {
 
     const [allCategory, setAllCategory] = useState<string[]>();
     useEffect(() => {
-        // 根据projectList来更新category
+        // Update catogory according to project list 根据projectList来更新category
         const tempAllCategory = allProjectList?.map(data => data.category)
         setAllCategory(tempAllCategory);
     }, [allProjectList])
@@ -30,18 +30,17 @@ export default function Operation(props: IOperationProps) {
     };
 
     const generateMenu = useCallback(() => {
-
-        // 对于category进行去重
+        // Remove duplicated category 对于category进行去重
         let uniqueCategory = Array.from(new Set(allCategory));
 
-        // 按照字母顺序进行排序
+        // Sort by alphapet 按照字母顺序进行排序
         const sortedCategory = uniqueCategory.map((category) => {
             return {
                 label: category,
                 key: category,
             }
         }).sort((a, b) => a.key.localeCompare(b.key));
-        // 加上展示所有的category
+        // Add 'All' catogory 加上展示所有的category
         const all = {
             label: Constant.All,
             key: Constant.All,
