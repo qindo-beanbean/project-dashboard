@@ -4,6 +4,10 @@
     overflow: scroll;
 }
 
+.project-list-wrapper.isMobile {
+    margin: 20px 24px 0 24px;
+}
+
 .single-project-wrapper {
     display: flex;
     justify-content: space-between;
@@ -44,8 +48,7 @@
     border: 1px solid var(--Green, #00CC74);
     background: var(--GreenOpacity, #CCF5E3);
     color: #00CC74;
-    margin-left: 75px;
-
+    margin-left: 50px;
     /* max-width: 120px; */
     /* flex: 4; */
 }
@@ -54,5 +57,16 @@
     min-width: 60px;
     flex: 2;
     color: var(--Red, #D15);
-    margin-left: 100px;
+    margin-left: 70px;
+}
+
+.my-projects {
+    color: var(--Dark-Blue, #223273);
+    font-family: Roboto Medium, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 22px;
+    margin-bottom: 8px;
+    margin-left: 24px;
 }

@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 
+const resolution = 800;
 export default function useDevice() {
-    const [isMobile, setIsMobile] = useState<boolean>(false);
+    const [isMobile, setIsMobile] = useState<boolean>(window.innerWidth < resolution);
     useEffect(() => {
         const handleResize = () => {
-            if (window.innerWidth < 900) {
+            if (window.innerWidth < resolution) {
                 setIsMobile(true);
             } else {
                 setIsMobile(false);

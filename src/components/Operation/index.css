@@ -42,6 +42,7 @@ h1 {
     width: 220px;
     height: 40px;
     line-height: 40px;
+    color: #223273;
 }
 
 .dropdown-wrapper:hover {
@@ -51,6 +52,7 @@ h1 {
 .input-wrapper-isMobile {
     border-radius: 0;
     border-bottom: 1px solid #787878;
+    margin-bottom: 50px;
 }
 
 .input-isMobile.ant-input-affix-wrapper {

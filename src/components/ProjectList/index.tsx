@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react'
 import { IProject } from '../../types/projectData';
-import './index.css'
 import { CategoryColorMap } from '../../common/mock';
 import { hexToRGBA } from '../../common/utils';
-import { Button, message, Popconfirm } from 'antd';
+import { Popconfirm } from 'antd';
+import useDevice from '../../hooks/useDevice';
+import classnames from 'classnames';
+import './index.css';
 
 interface IProjectListProps {
     projectData: IProject[];
@@ -11,42 +13,60 @@ interface IProjectListProps {
 }
 
 export default function ProjectList(props: IProjectListProps) {
+    const isMobile = useDevice();
     const { projectData } = props;
+
     return (
-        <div className='project-list-wrapper'>
-            {projectData?.map((project) => {
-                const categoryColor = hexToRGBA(CategoryColorMap[`${project.category}`], 1);
-                const semiTransparentColor = hexToRGBA(CategoryColorMap[`${project.category}`], 0.5);
-                return (
-                    <div
-                        className='single-project-wrapper'
-                        style={{
-                            borderLeft: `10px solid ${categoryColor}`
-                        }}
-                    >
+        <div>
+            <span className='my-projects' style={{ display: isMobile ? 'block' : 'none' }}>
+                My Projects:
+            </span>
+
+            <div className={classnames('project-list-wrapper', { 'isMobile': isMobile })}
+            >
+
+                {projectData?.map((project) => {
+                    const categoryColor = hexToRGBA(CategoryColorMap[`${project.category}`], 1);
+                    const semiTransparentColor = hexToRGBA(CategoryColorMap[`${project.category}`], 0.5);
+                    return (
+
                         <div
-                            className='category'
+                            className='single-project-wrapper'
+                            // className={classnames('header', { 'isMobile': isMobile })}
                             style={{
-                                backgroundColor: `${semiTransparentColor}`,
+                                borderLeft: `10px solid ${categoryColor}`
                             }}
                         >
-                            <span style={{ color: `${categoryColor}` }}>{project.category}</span>
+                            <div
+                                className='category'
+                                style={{
+                                    backgroundColor: `${semiTransparentColor}`,
+                                }}
+                            >
+                                <span style={{ color: `${categoryColor}` }}>{project.category}</span>
+                            </div>
+                            <span className='name'>{project.name}</span>
+                            <span className='users' style={{ display: isMobile ? 'none' : 'block' }}>
+                                {project.users} users
+                            </span>
+                            <span className='dashboards' style={{ display: isMobile ? 'none' : 'block' }}>
+                                {project.dashboards} Dashboards
+                            </span>
+                            <Popconfirm
+                                title="Delete the task"
+                                description="Are you sure to delete this task?"
+                                onConfirm={() => props.handleDelete(project.id)}
+                                okText="Yes"
+                                cancelText="No"
+                            >
+                                <span className='delete'>
+                                    Delete
+                                </span>
+                            </Popconfirm>
                         </div>
-                        <span className='name'>{project.name}</span>
-                        <span className='users'>{project.users} users</span>
-                        <span className='dashboards'>{project.dashboards} Dashboards</span>
-                        <Popconfirm
-                            title="Delete the task"
-                            description="Are you sure to delete this task?"
-                            onConfirm={() => props.handleDelete(project.id)}
-                            okText="Yes"
-                            cancelText="No"
-                        >
-                            <span className='delete'>Delete</span>
-                        </Popconfirm>
-                    </div>
-                )
-            })}
+                    )
+                })}
+            </div>
         </div>
     )
 }
